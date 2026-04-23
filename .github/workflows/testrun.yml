@@ -32,19 +32,6 @@ jobs:
     #       # fetches the entire Git history
     #       fetch-depth: 0
 
-    - name: 🔄 Check if Branch is up-to-date
-      if: github.event_name == 'pull_request'
-      run: |
-        git fetch origin ${{ github.base_ref }}
-        LOCAL=$(git rev-parse HEAD)
-        REMOTE=$(git rev-parse origin/${{ github.base_ref }})
-        if [ "$LOCAL" != "$REMOTE" ]; then
-          echo "❌ Branch is not up to date with origin/${{ github.base_ref }}. Please run git pull."
-          exit 1
-        else
-          echo "✅ Branch is up to date."
-        fi
-
     - name: 🐍 Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v5
       with:
