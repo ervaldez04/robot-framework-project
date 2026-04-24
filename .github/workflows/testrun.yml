@@ -48,7 +48,7 @@ jobs:
       uses: browser-actions/setup-chrome@latest
 
     - name: 🔧 Setup Chromedriver
-      uses: browser-actions/setup-chromedriver@latest
+      uses: nanasess/setup-chromedriver@v2
       with:
         chromedriver-version: 'matching'
 
