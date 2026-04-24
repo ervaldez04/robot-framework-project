@@ -64,10 +64,10 @@ jobs:
     - name: 🧪 Run tests on ${{ matrix.browser }}
       run: |
         robot \
-                --variable HEADLESS:True \
-                --variable BROWSER:${{ matrix.browser }} \
-                --outputdir results \
-                .  
+          --variable HEADLESS:True \
+          --variable BROWSER:${{ matrix.browser }} \
+          --outputdir results \
+          .  
 
     - name: 📊 Test Report Generation
       uses: actions/upload-artifact@v4
