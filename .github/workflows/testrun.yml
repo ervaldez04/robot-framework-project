@@ -43,6 +43,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
+    # Chrome setup
     - name: 🌐 Setup Chrome
       uses: browser-actions/setup-chrome@latest
 
@@ -51,10 +52,19 @@ jobs:
       with:
         chromedriver-version: 'matching'
 
+    # Firefox setup
+    - name: 🌐 Setup Firefox
+      uses: browser-actions/setup-firefox@latest
+
+    - name: 🔧 Setup Geckodriver
+      uses: browser-actions/setup-geckodriver@latest
+
     - name: 🔍 Check Browser Version
       run: |
-        google-chrome --version
+        google-chrome --version || true
         chromedriver --version || true
+        firefox --version || true
+        geckodriver --version || true
 
     - name: 🧪 Run tests on ${{ matrix.browser }}
       run: |
