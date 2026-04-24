@@ -18,6 +18,7 @@ Open Browser With Options
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless
     ### Run in Jenkins ###
     Call Method    ${options}    add_argument    --no-sandbox
+    Call Method    ${options}    add_argument    --disable-setuid-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
     ### Set window size ###
