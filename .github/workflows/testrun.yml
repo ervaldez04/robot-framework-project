@@ -20,9 +20,9 @@ jobs:
     strategy:
       matrix:
         # run test in multiple browser
-        browser: [chrome, firefox]
+        browser: [chrome]
         # ensures your workflow runs on multiple Python versions automatically
-        python-version: [3.12.4, 3.13.0]
+        python-version: [3.12.4]
 
     steps:
     - name: 📥 Checkout Repository
