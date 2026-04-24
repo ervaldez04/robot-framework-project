@@ -47,11 +47,6 @@ jobs:
     - name: 🌐 Setup Chrome
       uses: browser-actions/setup-chrome@latest
 
-    - name: 🔧 Setup Chromedriver
-      uses: nanasess/setup-chromedriver@v2
-      with:
-        chromedriver-version: 'matching'
-
     # Firefox setup
     - name: 🌐 Setup Firefox
       uses: browser-actions/setup-firefox@latest
