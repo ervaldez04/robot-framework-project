@@ -7,7 +7,6 @@ Resource         ../../../Configurations/ImportKeyword/DemoQA.robot
 Click Submit Button
     [Documentation]    Click Submit Button
     [Arguments]
-    # Run Keyword If    '${is_headless}'=='${True}'    Scroll Element Into View    ${SUBMIT_BUTTON}
     Click Button    ${SUBMIT_BUTTON}
 
 Enter Current Address

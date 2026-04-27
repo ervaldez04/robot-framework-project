@@ -4,6 +4,16 @@ Documentation     Generic Keywords that can be used in any testing site
 Resource          ../../Configurations/ImportGenericFile/GenericFile.robot
 
 *** Keywords ***
+Is Element Not Visible
+    [Documentation]    Is Element Not Visible
+    ${TARGET_LOCATOR}=    Set Variable    ${None}
+    ${status}=    Run Keyword And Return Status    Element Should Be Visible    ${TARGET_LOCATOR}
+    ${result}=    Set Variable    ${False}
+    IF    not ${status}
+        ${result}=    Set Variable    ${True}
+    END
+    RETURN    ${result}
+
 Get System Date
     [Documentation]    Generate system date
     ${date}    Get Current Date    result_format=%Y-%m-%d
@@ -16,11 +26,12 @@ Open Browser With Options
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     ### Run Headless ###
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless
+    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins=*
+    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
     ### Run in Jenkins ###
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
     ### Set window size ###
     Call Method    ${options}    add_argument    --window-size\=1920,1080
     ### Disable Google Password Manager ###
@@ -29,8 +40,8 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --incognito
     Log    ${options}
 
-    Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
-    
+    # Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
+
     Set Timeout If Jenkins
     Open Browser    ${url}    ${browser}    options=${options}
     Run Keyword If    '${headless}'=='${False}'    Maximize Browser Window
