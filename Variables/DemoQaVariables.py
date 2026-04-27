@@ -2,8 +2,9 @@
 
 ### URLs ###
 DEMO_QA = "https://demoqa.com/"
-DEMO_QA_TEXT_BOX = "https://demoqa.com/text-box"
 DEMO_QA_CHECK_BOX = "https://demoqa.com/checkbox"
+DEMO_QA_RADIO_BUTTON = "https://demoqa.com/radio-button"
+DEMO_QA_TEXT_BOX = "https://demoqa.com/text-box"
 
 ### Text Box Page ###
 ALL_FIELDS_POPULATED = ["Cathy Marcus", "CathyMarcus@test.com", "Unit 1002 Grin Residences, Tafit Ave., Manila, Philippines", "40 Maple St. Beverly Greenhills Subd., Makaty City, Philippines"]
@@ -26,3 +27,8 @@ NOTES_CHECKBOX = "Notes"
 NOTES_CHECKED_OUTPUT = "notes"
 WORKSPACE_CHECKBOX = "Workspace"
 WORKSPACE_CHECKED_OUTPUT = "workspace react angular veu"
+
+### Radio Button Page ###
+IMPRESSIVE_TEXT = "Impressive"
+NAME_GROUP = "like"
+YES_TEXT = "Yes"
