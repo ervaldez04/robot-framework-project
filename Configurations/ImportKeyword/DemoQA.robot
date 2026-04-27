@@ -8,4 +8,5 @@ Variables    ../../Variables/DemoQaVariables.py
 
 ### Locators ###
 Resource    ../../Locators/Static/DemoQA/ElementsModule/CheckBox.robot
+Resource    ../../Locators/Static/DemoQA/ElementsModule/RadioButton.robot
 Resource    ../../Locators/Static/DemoQA/ElementsModule/TextBox.robot
