@@ -66,7 +66,7 @@ jobs:
         robot \
           --variable HEADLESS:True \
           --variable BROWSER:${{ matrix.browser }} \
-          --exclude Blocked tests \
+          --exclude Blocked \
           --outputdir results \
           .  
 
