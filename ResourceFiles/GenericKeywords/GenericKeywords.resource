@@ -39,7 +39,7 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --incognito
     Log    ${options}
 
-    Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
+    # Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
 
     Set Timeout If Jenkins
     Open Browser    ${url}    ${browser}    options=${options}
