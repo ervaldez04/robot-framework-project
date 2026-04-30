@@ -21,12 +21,12 @@ Get System Date
     RETURN    ${date}
 
 Open Browser With Options
-    [Documentation]    Open browser with options
+    [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     ### Run Headless ###
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless
-    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins=*
+    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
     ### Run in Jenkins ###
     Call Method    ${options}    add_argument    --no-sandbox
@@ -54,8 +54,26 @@ Set Timeout If Jenkins
     ${ci}=    Get Environment Variable    CI    default=${False}
     Run Keyword If    '${ci}'=='${True}'    Set Selenium Timeout    10s
 
+Strip Text To Max Length
+    [Documentation]    Strip Text To Max Length
+    [Arguments]    ${text}    ${max_length}
+    ${trimmed}=    Evaluate    "${text}"[:${max_length}]
+    RETURN       ${trimmed}
+
+Update Field If Provided
+    [Documentation]    Update Field If Provided
+    [Arguments]    ${keyword}    ${value}
+    Run Keyword If    '${value}'=='${EMPTY}'    Log    No update for ${keyword}
+    ...    ELSE    Run Keyword    ${keyword}    ${value}
+
 ### VALIDATION ###
 Validate Field Type
-    [Documentation]    Validate field type
+    [Documentation]    Validate Field Type
     [Arguments]    ${webelement}    ${field_type}    ${value}
     Element Attribute Value Should Be    ${webelement}    ${field_type}    ${value}
+
+Validate Input Field Value
+    [Documentation]    Validate Input Field Value
+    [Arguments]    ${locator}    ${expected_value}
+    ${actual}=     Get Element Attribute    ${locator}    value
+    Should Be Equal    ${actual}    ${expected_value}
