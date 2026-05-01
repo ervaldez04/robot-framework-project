@@ -20,6 +20,19 @@ Get System Date
     Log    ${date}
     RETURN    ${date}
 
+New Tab Should Open
+    [Documentation]    New Tab Should Open
+    [Arguments]    @{old_handles}
+    @{handles}=    Get Window Handles
+    IF    len(@{handles}) > len(@{old_handles})
+        Log    New tab opened successfully
+    ELSE
+        Fail    New tab did not open
+    END
+    ${new_tab}=    Set Variable    ${handles}[-1]
+    Switch Window    ${new_tab}
+    Set Global Variable    ${new_tab}
+
 Open Browser With Options
     [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
