@@ -38,10 +38,10 @@ Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     ### Run Headless ###
-    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless
+    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless=new
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
-    ### Run in Jenkins ###
+    ### Run in Continuous Integration ###
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
