@@ -36,7 +36,8 @@ New Tab Should Open
 Open Browser With Options
     [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     # ${options}=    Evaluate    __import__("selenium.webdriver").webdriver.ChromeOptions()
     ### Run Headless ###
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless=new
