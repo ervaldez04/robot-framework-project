@@ -2,6 +2,7 @@
 
 ### URLs ###
 DEMO_QA = "https://demoqa.com/"
+DEMO_QA_BUTTONS = "https://demoqa.com/buttons"
 DEMO_QA_CHECK_BOX = "https://demoqa.com/checkbox"
 DEMO_QA_RADIO_BUTTON = "https://demoqa.com/radio-button"
 DEMO_QA_TEXT_BOX = "https://demoqa.com/text-box"
@@ -87,3 +88,11 @@ UPDATED_EMAIL = "marygracecandez@example.com"
 UPDATED_FIRST_NAME = "Marie Grace"
 UPDATED_LAST_NAME = "Kandez"
 UPDATED_SALARY = "3500"
+
+### Buttons Page ###
+CLICK = "Click"
+CLICK_ME_MESSAGE = "You have done a dynamic click"
+DOUBLE_CLICK = "Double Click"
+DOUBLE_CLICK_ME_MESSAGE = "You have done a double click"
+RIGHT_CLICK = "Right Click"
+RIGHT_CLICK_ME_MESSAGE = "You have done a right click"
