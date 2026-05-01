@@ -58,7 +58,9 @@ Open Browser With Options
     # Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
 
     Set Timeout If Jenkins
-    Open Browser    ${url}    ${browser}    options=${options}    service_log_path=chromedriver.log
+    ${service}=    Evaluate    sys.modules['selenium.webdriver.chrome.service'].Service(log_output="chromedriver.log")
+    ...    sys
+    Open Browser    ${url}    ${browser}    options=${options}    service=${service}
     Run Keyword If    '${headless}'=='${False}'    Maximize Browser Window
 
     Run Keyword If    '${headless}'=='${True}'    Set Selenium Timeout    10s
