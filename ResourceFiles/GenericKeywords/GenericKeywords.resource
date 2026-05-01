@@ -37,6 +37,7 @@ Open Browser With Options
     [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+    # ${options}=    Evaluate    __import__("selenium.webdriver").webdriver.ChromeOptions()
     ### Run Headless ###
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless=new
     Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins
@@ -56,7 +57,7 @@ Open Browser With Options
     # Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
 
     Set Timeout If Jenkins
-    Open Browser    ${url}    ${browser}    options=${options}
+    Open Browser    ${url}    ${browser}    options=${options}    service_log_path=chromedriver.log
     Run Keyword If    '${headless}'=='${False}'    Maximize Browser Window
 
     Run Keyword If    '${headless}'=='${True}'    Set Selenium Timeout    10s
