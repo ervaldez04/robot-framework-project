@@ -21,7 +21,7 @@ jobs:
     strategy:
       matrix:
         # run test in multiple browser
-        browser: [chrome]
+        browser: [headlesschrome]
         # ensures your workflow runs on multiple Python versions automatically
         python-version: [3.12.4]
 
