@@ -1,5 +1,5 @@
 ### Note: arrange alhabetically ###
-### Demo QA - Elements Module - Check Box Window ###
+### Demo QA - Elements Module - Radio Button Window ###
 
 *** Variables ***
 ${IMPRESSIVE_RADIO_BUTTON}    id:impressiveRadio

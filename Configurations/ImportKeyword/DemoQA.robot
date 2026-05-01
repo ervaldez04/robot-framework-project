@@ -10,6 +10,7 @@ Variables    ../../Variables/DemoQaVariables.py
 Resource    ../../Locators/Dynamic/DemoQA/ElementsModule/WebTables.robot
 
 ### Locators - Static ###
+Resource    ../../Locators/Static/DemoQA/ElementsModule/Buttons.robot
 Resource    ../../Locators/Static/DemoQA/ElementsModule/CheckBox.robot
 Resource    ../../Locators/Static/DemoQA/ElementsModule/RadioButton.robot
 Resource    ../../Locators/Static/DemoQA/ElementsModule/TextBox.robot
