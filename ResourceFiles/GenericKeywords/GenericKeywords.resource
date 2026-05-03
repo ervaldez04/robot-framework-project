@@ -4,6 +4,26 @@ Documentation     Generic Keywords that can be used in any testing site
 Resource          ../../Configurations/ImportGenericFile/GenericFile.robot
 
 *** Keywords ***
+Wait And Click
+    [Documentation]    Wait And Click
+    ...    Use Click Element instead of Click Button / Click Link (it is universal)
+    [Arguments]    ${locator}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Wait Until Element Is Enabled    ${locator}    ${timeout}
+    Scroll Element Into View    ${locator}
+    Click Element    ${locator}
+
+# ### For Flaky ###
+# Wait And Click With Retry
+#     [Documentation]    Retries click once if the first click fails due to animation or overlay.
+#     [Arguments]    ${locator}    ${timeout}=10s
+#     Wait Until Element Is Visible    ${locator}    ${timeout}
+#     Wait Until Element Is Enabled    ${locator}    ${timeout}
+#     Scroll Element Into View    ${locator}
+#     Run Keyword And Ignore Error    Click Element    ${locator}
+#     Sleep    500ms
+#     Click Element    ${locator}
+
 Is Element Not Visible
     [Documentation]    Is Element Not Visible
     ${TARGET_LOCATOR}=    Set Variable    ${None}

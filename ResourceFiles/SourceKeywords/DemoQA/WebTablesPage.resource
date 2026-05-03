@@ -28,23 +28,23 @@ Add Record
 Click Add
     [Documentation]    Click Add
     Wait Until Element Is Visible    ${ADD_BUTTON}
-    Click Element    ${ADD_BUTTON}
+    Wait And Click    ${ADD_BUTTON}
 
 Click Delete
     [Documentation]    Click Delete
-    Click Element    ${DELETE_ICON}
+    Wait And Click    ${DELETE_ICON}
 
 Click Edit
     [Documentation]    Click Edit
-    Click Element    ${EDIT_ICON}
+    Wait And Click    ${EDIT_ICON}
 
 Click Submit
     [Documentation]    Click Submit
-    Click Element    ${SUBMIT_BUTTON}
+    Wait And Click    ${SUBMIT_BUTTON}
 
 Click X
     [Documentation]    Click X
-    Click Element    ${X_BUTTON}
+    Wait And Click    ${X_BUTTON}
 
 Delete Added Record
     [Documentation]    Delete Added Record

@@ -12,14 +12,14 @@ Select Impressive Radio Button
     [Documentation]    Select Impressive Radio Button
     ...    There is no "value" attribute so 'Select Radio Button' cannot be used
     ...    HTML: <input id="impressiveRadio" class="form-check-input" type="radio" name="like">
-    Click Element    ${IMPRESSIVE_RADIO_BUTTON}
+    Wait And Click    ${IMPRESSIVE_RADIO_BUTTON}
 
 Select No Radio Button
     [Documentation]    Select No Radio Button
     ...    There is no "value" attribute so 'Select Radio Button' cannot be used
     ...    HTML: <input id="yesRadio" class="form-check-input" type="radio" name="like">
     ...    Radio Button is disabled
-    ${is_clickable}=    Run Keyword And Return Status    Click Element    ${NO_RADIO_BUTTON}
+    ${is_clickable}=    Run Keyword And Return Status    Wait And Click    ${NO_RADIO_BUTTON}
     ${is_clickable}=    Convert To String    ${is_clickable}
     RETURN    ${is_clickable}
 
@@ -27,7 +27,7 @@ Select Yes Radio Button
     [Documentation]    Select Yes Radio Button
     ...    There is no "value" attribute so 'Select Radio Button' cannot be used
     ...    HTML: <input id="noRadio" disabled="" class="form-check-input disabled" type="radio" name="like">
-    Click Element    ${YES_RADIO_BUTTON}
+    Wait And Click    ${YES_RADIO_BUTTON}
 
 ### VALIDATION ###
 Validate No Radio Button Is Disabled

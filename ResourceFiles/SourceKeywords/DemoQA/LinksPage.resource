@@ -6,23 +6,23 @@ Resource         ../../../Configurations/ImportKeyword/DemoQA.robot
 *** Keywords ***
 Click Bad Request
     [Documentation]    Click Bad Request
-    Click Link    ${BAD_REQUEST_LINK}
+    Wait And Click    ${BAD_REQUEST_LINK}
 
 Click Created
     [Documentation]    Click Created
-    Click Link    ${CREATED_LINK}
+    Wait And Click    ${CREATED_LINK}
 
 Click Dynamic Home
     [Documentation]    Click Dynamic Home
-    Click Link    ${DYNAMIC_HOME_LINK}
+    Wait And Click    ${DYNAMIC_HOME_LINK}
 
 Click Forbidden
     [Documentation]    Click Forbidden
-    Click Link    ${FORBIDDEN_LINK}
+    Wait And Click    ${FORBIDDEN_LINK}
 
 Click Home
     [Documentation]    Click Home
-    Click Link    ${HOME_LINK}
+    Wait And Click    ${HOME_LINK}
 
 Click Link To Send API Call
     [Documentation]    Click Link To Send API Call
@@ -53,6 +53,7 @@ Click Link To Send API Call
     END
 
 Click Link And Switch To New Tab
+    [Documentation]    Click Link And Switch To New Tab
     [Arguments]    ${link}=${HOME}
     @{handles_before}=    Get Window Handles
     Run Keyword If    '${link}'=='${HOME}'    CLick Home
@@ -62,19 +63,19 @@ Click Link And Switch To New Tab
 
 Click Moved
     [Documentation]    Click Moved
-    Click Link    ${MOVED_LINK}
+    Wait And Click    ${MOVED_LINK}
 
 Click No Content
     [Documentation]    Click No Content
-    Click Link    ${NO_CONTENT_LINK}
+    Wait And Click    ${NO_CONTENT_LINK}
 
 Click Not Found
     [Documentation]    Click Not Found
-    Click Link    ${NOT_FOUND_LINK}
+    Wait And Click    ${NOT_FOUND_LINK}
 
 Click Unauthorized
     [Documentation]    Click Unauthorized
-    Click Link    ${UNAUTHORIZED_LINK}
+    Wait And Click    ${UNAUTHORIZED_LINK}
 
 Close Opened Tab
     [Documentation]    Close Opened Tab

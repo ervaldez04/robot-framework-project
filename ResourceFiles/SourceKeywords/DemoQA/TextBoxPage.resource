@@ -6,7 +6,7 @@ Resource         ../../../Configurations/ImportKeyword/DemoQA.robot
 *** Keywords ***
 Click Submit Button
     [Documentation]    Click Submit Button
-    Click Button    ${SUBMIT_BUTTON}
+    Wait And Click    ${SUBMIT_BUTTON}
 
 Enter Current Address
     [Documentation]    Enter Current Address

@@ -19,10 +19,10 @@ Expand And Set Checkbox
         Log    Found ${count} collapsed tree switchers
         FOR    ${index}    IN RANGE    ${count}
             ${index}=    Evaluate    ${index}+1
-            Click Element    xpath=(//*[contains(@class,"rc-tree-switcher") and not(contains(@class,"rc-tree-switcher_open"))])[${index}]
+            Wait And Click    xpath=(//*[contains(@class,"rc-tree-switcher") and not(contains(@class,"rc-tree-switcher_open"))])[${index}]
             Sleep    0.5s
         END
-        Click Element    xpath=(//*[contains(@class,"rc-tree-switcher") and not(contains(@class,"rc-tree-switcher_open"))])[1]
+        Wait And Click    xpath=(//*[contains(@class,"rc-tree-switcher") and not(contains(@class,"rc-tree-switcher_open"))])[1]
         Sleep    0.5s
     END
     ### Final check after loop ###
@@ -33,10 +33,10 @@ Expand And Set Checkbox
     ### Check if check box is checked or unchecked ###
     ${is_checked}=    Get Element Attribute    ${locator}    aria-checked
     ### Set check box of label ###
-    Run Keyword If    '${is_checked}'=='${FALSE}' and '${check}'=='${True}'    Click Element    ${locator}
+    Run Keyword If    '${is_checked}'=='${FALSE}' and '${check}'=='${True}'    Wait And Click    ${locator}
     ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${True}'    Log    Check Box is already checked
     ...    ELSE IF    '${is_checked}'=='${FALSE}' and '${check}'=='${False}'    Log    Check Box is already unchecked
-    ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${False}'    Click Element    ${locator}
+    ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${False}'    Wait And Click    ${locator}
     ...    ELSE    Fail    Choose either True or False!
 
     # ### Expand menu until the target menu is visible ###
@@ -75,10 +75,10 @@ Set Home Check Box
     [Arguments]    ${home_check}=${True}
     ### Check if check bos is checked or unchecked ###
     ${is_checked}=    Get Element Attribute    ${HOME_CHECK_BOX}    aria-checked
-    Run Keyword If    '${is_checked}'=='${FALSE}' and '${home_check}'=='${True}'    Click Element    ${HOME_CHECK_BOX}
+    Run Keyword If    '${is_checked}'=='${FALSE}' and '${home_check}'=='${True}'    Wait And Click    ${HOME_CHECK_BOX}
     ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${home_check}'=='${True}'    Log    Check Box is already checked
     ...    ELSE IF    '${is_checked}'=='${FALSE}' and '${home_check}'=='${False}'    Log    Check Box is already unchecked
-    ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${home_check}'=='${False}'    Click Element    ${HOME_CHECK_BOX}
+    ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${home_check}'=='${False}'    Wait And Click    ${HOME_CHECK_BOX}
     ...    ELSE    Fail    Choose either True or False!
 
 ### VALIDATION ###
