@@ -3,4 +3,4 @@
 
 *** Variables ***
 ${HOME_CHECK_BOX}    //*[@aria-label="Select Home"]
-${DISPLAY_RESULT}    id:result
+${DISPLAY_RESULT}    //div[@id='result']
