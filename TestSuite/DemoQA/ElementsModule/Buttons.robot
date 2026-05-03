@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Test Case for Demo QA - Elements Module - Web Tables
+Documentation     Test Case for Demo QA - Elements Module - Buttons
 Resource          ../../../Configurations/ImportFileSource/DemoQA.robot
 Test Tags         DemoQA_Elements_Buttons
 Suite Setup       Open Browser With Options   ${DEMO_QA}    ${BROWSER}    ${HEADLESS}

@@ -2,6 +2,7 @@
 
 ### URLs ###
 DEMO_QA = "https://demoqa.com/"
+DEMO_QA_BROKEN_LINKS = "https://demoqa.com/broken"
 DEMO_QA_BUTTONS = "https://demoqa.com/buttons"
 DEMO_QA_CHECK_BOX = "https://demoqa.com/checkbox"
 DEMO_QA_LINKS = "https://demoqa.com/links"
@@ -110,3 +111,6 @@ MOVED = "Moved"
 NO_CONTENT = "No Content"
 NOT_FOUND = "Not Found"
 UNAUTHORIZED = "Unauthorized"
+
+### Broken Links Page ###
+INVALID_LINK_URL = "https://the-internet.herokuapp.com/status_codes/500"
