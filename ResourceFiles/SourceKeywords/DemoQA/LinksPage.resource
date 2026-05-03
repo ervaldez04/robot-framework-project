@@ -28,25 +28,18 @@ Click Link To Send API Call
     [Documentation]    Click Link To Send API Call
     [Arguments]    ${api_call}
     IF    '${api_call}'=='${CREATED}'
-        Wait Until Element Is Visible    ${CREATED_LINK}
         Click Created
     ELSE IF    '${api_call}'=='${NO_CONTENT}'
-        Wait Until Element Is Visible    ${NO_CONTENT_LINK}
         Click No Content
     ELSE IF    '${api_call}'=='${MOVED}'
-        Wait Until Element Is Visible    ${MOVED_LINK}
         Click Moved
     ELSE IF    '${api_call}'=='${BAD_REQUEST}'
-        Wait Until Element Is Visible    ${BAD_REQUEST_LINK}
         Click Bad Request
     ELSE IF    '${api_call}'=='${UNAUTHORIZED}'
-        Wait Until Element Is Visible    ${UNAUTHORIZED_LINK}
         Click Unauthorized
     ELSE IF    '${api_call}'=='${FORBIDDEN}'
-        Wait Until Element Is Visible    ${FORBIDDEN_LINK}
         Click Forbidden
     ELSE IF    '${api_call}'=='${NOT_FOUND}'
-        Wait Until Element Is Visible    ${NOT_FOUND_LINK}
         Click Not Found
     ELSE
         Fail    Log    Invalid link!
