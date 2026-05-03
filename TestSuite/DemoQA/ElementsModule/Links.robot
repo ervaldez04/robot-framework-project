@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Test Case for Demo QA - Elements Module - Links
 Resource          ../../../Configurations/ImportFileSource/DemoQA.robot
-Test Tags         DemoQA_Elements_Link
+Test Tags         DemoQA_Elements_Links
 Suite Setup       Open Browser With Options    ${DEMO_QA}    ${BROWSER}    ${HEADLESS}
 Suite Teardown    Close All Browsers
 
