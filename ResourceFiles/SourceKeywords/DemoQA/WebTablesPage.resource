@@ -27,6 +27,7 @@ Add Record
 
 Click Add
     [Documentation]    Click Add
+    Wait Until Element Is Visible    ${ADD_BUTTON}
     Click Element    ${ADD_BUTTON}
 
 Click Delete
