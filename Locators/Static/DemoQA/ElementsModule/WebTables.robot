@@ -2,7 +2,7 @@
 ### Demo QA - Elements Module - Web Tables Window ###
 
 *** Variables ***
-${ADD_BUTTON}            id:addNewRecordButton
+${ADD_BUTTON}            //button[@id='addNewRecordButton']
 ${AGE_FIELD}             //input[@id='age']
 ${DELETE_ICON}           //span[contains(@id,'delete-record')]
 ${DEPARTMENT_FIELD}      //input[@id='department']
@@ -15,9 +15,9 @@ ${LAST_NAME_FIELD}       //input[@id='lastName']
 ${NEXT_BUTTON}           //button[normalize-space()='First']
 ${PAGE_SECTION}          //*[@class='col-auto']/strong
 ${PREVIOUS_BUTTON}       //button[normalize-space()='First']
-${REGISTRATION_MODAL}    class:modal-content
+${REGISTRATION_MODAL}    //*[@class='modal-content']
 ${SALARY_FIELD}          //input[@id='salary']
-${SEARCH_FIELD}          id:searchBox
+${SEARCH_FIELD}          //input[@id='searchBox']
 ${SUBMIT_BUTTON}         //button[@id='submit']
 ${TABLE}                 //table[contains(@class, 'table-striped')]
 ${TABLE_BODY}            ${TABLE}//tbody
