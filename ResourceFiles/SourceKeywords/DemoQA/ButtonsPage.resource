@@ -12,7 +12,7 @@ Select Type Of Click for Click Me
     Set Focus To Element    ${CLICK_ME_BUTTON}
     Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Double Click Element    ${CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${CLICK_ME_BUTTON}
-    ...    ELSE IF    '${selected_button}'=='${CLICK}'    Click Button    ${CLICK_ME_BUTTON}
+    ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
 
 Select Type Of Click for Double Click Me
@@ -23,7 +23,7 @@ Select Type Of Click for Double Click Me
     Set Focus To Element    ${DOUBLE_CLICK_ME_BUTTON}
     Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Double Click Element    ${DOUBLE_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${DOUBLE_CLICK_ME_BUTTON}
-    ...    ELSE IF    '${selected_button}'=='${CLICK}'    Click Button    ${DOUBLE_CLICK_ME_BUTTON}
+    ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${DOUBLE_CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
 
 Select Type Of Click for Right Click Me
@@ -34,7 +34,7 @@ Select Type Of Click for Right Click Me
     Set Focus To Element    ${RIGHT_CLICK_ME_BUTTON}
     Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Double Click Element    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${RIGHT_CLICK_ME_BUTTON}
-    ...    ELSE IF    '${selected_button}'=='${CLICK}'    Click Button    ${RIGHT_CLICK_ME_BUTTON}
+    ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
 
 Navigate To Buttons Page

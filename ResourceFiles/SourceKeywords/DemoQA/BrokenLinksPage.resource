@@ -6,11 +6,11 @@ Resource         ../../../Configurations/ImportKeyword/DemoQA.robot
 *** Keywords ***
 Click Invalid Link
     [Documentation]    Click Invalid Link
-    Click Link    ${INVALID_LINK}
+    Wait And Click    ${INVALID_LINK}
 
 Click Valid Link
     [Documentation]    Click Valid Link
-    Click Link    ${VALID_LINK}
+    Wait And Click    ${VALID_LINK}
 
 Navigate To Broken Links Page
     [Documentation]    Navigate to Broken Links Page
