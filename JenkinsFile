@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -24,6 +23,15 @@ pipeline {
             steps {
                 git branch: 'main',
                     url: 'https://github.com/ervaldez04/robot-framework-project.git'
+            }
+        }
+
+        stage('Debug Workspace') {
+            steps {
+                bat 'echo ===== WORKSPACE ====='
+                bat 'dir'
+                bat 'echo ===== TestSuite ====='
+                bat 'dir TestSuite'
             }
         }
 
