@@ -10,7 +10,7 @@ Wait And Click
     [Arguments]    ${locator}    ${timeout}=10s
     Wait Until Element Is Visible    ${locator}    ${timeout}
     Wait Until Element Is Enabled    ${locator}    ${timeout}
-    Scroll Element Into View    ${locator}
+    # Scroll Element Into View    ${locator}
     Click Element    ${locator}
 
 # ### For Flaky ###
