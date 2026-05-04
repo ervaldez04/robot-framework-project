@@ -11,10 +11,11 @@ Wait And Click
     Wait Until Element Is Visible    ${locator}    ${timeout}
     Wait Until Element Is Enabled    ${locator}    ${timeout}
     Scroll Element Into View    ${locator}
-    Execute Javascript    arguments[0].scrollIntoView({block: 'center'});    ${locator}
+    ${element}=    Get WebElement    ${locator}
     ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
-    Run Keyowrd If    '${is_clicked}'=='${True}'    Log    Click Element is used
-    ...    ELSE    Execute Javascript    arguments[0].click();    ${locator}
+    Run Keyword If    '${is_clicked}'=='${True}'    Log    Click Element is used
+    ...    ELSE    Run Keywords    Execute Javascript    arguments[0].scrollIntoView({block: 'center'});    ${element}
+    ...    AND    Execute Javascript    arguments[0].click();    ${element}
     # Execute Javascript    arguments[0].click();    ${locator}
     # Click Element    ${locator}
 
