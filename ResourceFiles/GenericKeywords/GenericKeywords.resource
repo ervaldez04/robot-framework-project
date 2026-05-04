@@ -12,12 +12,12 @@ Wait And Click
     Wait Until Element Is Enabled    ${locator}    ${timeout}
     ${element}=    Get WebElement    ${locator}
     Scroll Element Into View    ${locator}
-    Press Keys    None    PAGE_UP
+    # Press Keys    None    PAGE_UP
     ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
     IF    not ${is_clicked}
         Log    Click intercepted – scrolling more and retrying
         Press Keys    None    PAGE_UP
-        Press Keys    None    PAGE_UP
+        # Press Keys    None    PAGE_UP
         Click Element    ${locator}
     END
 
