@@ -83,6 +83,11 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
+    ${ci}=    Get Environment Variable    CI    default=${False}
+    IF    '${ci}'=='${True}'
+        Call Method    ${options}    add_argument    --disable-extensions-except=${CURDIR}/extensions/ublock
+        Call Method    ${options}    add_argument    --load-extension=${CURDIR}/extensions/ublock
+    END
     ### Set window size ###
     Call Method    ${options}    add_argument    --window-size\=1920,1080
     ### Disable Google Password Manager ###
@@ -106,6 +111,14 @@ Set Timeout If Jenkins
     [Documentation]    Add Timeout when running in Jenkins to fix flaky test
     ${ci}=    Get Environment Variable    CI    default=${False}
     Run Keyword If    '${ci}'=='${True}'    Set Selenium Timeout    10s
+
+Set Extension If Jenkins
+    [Documentation]    Set Extension If Jenkins
+    ${ci}=    Get Environment Variable    CI    default=${False}
+    IF    '${ci}'=='${True}'
+        Call Method    ${options}    add_argument    --disable-extensions-except=${CURDIR}/extensions/ublock
+        Call Method    ${options}    add_argument    --load-extension=${CURDIR}/extensions/ublock
+    END
 
 Strip Text To Max Length
     [Documentation]    Strip Text To Max Length
