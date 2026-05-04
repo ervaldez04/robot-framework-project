@@ -14,7 +14,7 @@ Wait And Click
     Scroll Element Into View    ${locator}
     Press Keys    None    PAGE_UP
     ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
-    IF    not ${status}
+    IF    not ${is_clicked}
         Log    Click intercepted – scrolling more and retrying
         Press Keys    None    PAGE_UP
         Press Keys    None    PAGE_UP
