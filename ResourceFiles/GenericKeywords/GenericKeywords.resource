@@ -85,7 +85,7 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     ${ci}=    Get Environment Variable    CI    default=${False}
     IF    '${ci}'=='${True}'
-        Call Method    ${options}    add_argument    --disable-extensions-except=${EXECDIR}\\Resources\\Extensions/ublock
+        Call Method    ${options}    add_argument    --disable-extensions-except=${EXECDIR}\\Resources\\Extensions\\ublock
         Call Method    ${options}    add_argument    --load-extension=${EXECDIR}\\extensions\\ublock
     END
     ### Set window size ###
