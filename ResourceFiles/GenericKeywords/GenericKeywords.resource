@@ -10,8 +10,22 @@ Wait And Click
     [Arguments]    ${locator}    ${timeout}=10s
     Wait Until Element Is Visible    ${locator}    ${timeout}
     Wait Until Element Is Enabled    ${locator}    ${timeout}
-    # Scroll Element Into View    ${locator}
-    Click Element    ${locator}
+    ${element}=    Get WebElement    ${locator}
+    Scroll Element Into View    ${locator}
+    Press Keys    None    PAGE_UP
+    ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
+    IF    not ${is_clicked}
+        Log    Click intercepted – scrolling more and retrying
+        Press Keys    None    PAGE_UP
+        Press Keys    None    PAGE_UP
+        Click Element    ${locator}
+    END
+
+    # Run Keyword If    '${is_clicked}'=='${True}'    Log    Click Element is used
+    # ...    ELSE    Run Keywords    Execute Javascript    arguments[0].scrollIntoView({block: 'center'});    ${element}
+    # ...    AND    Execute Javascript    arguments[0].click();    ${element}
+    # Execute Javascript    arguments[0].click();    ${locator}
+    # Click Element    ${locator}
 
 # ### For Flaky ###
 # Wait And Click With Retry
