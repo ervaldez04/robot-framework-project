@@ -72,17 +72,18 @@ New Tab Should Open
 Open Browser With Options
     [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
-    
-    ${options}=    Evaluate    selenium.webdriver.ChromeOptions()    modules=selenium.webdriver
-    ${path}=    Set Variable    ${EXECDIR}\\Resources\\Extensions\\ublock
-
-    # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     # ${options}=    Evaluate    __import__("selenium.webdriver").webdriver.ChromeOptions()
     ### Run Headless ###
-    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless=new
-    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins
-    Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
+    IF    '${headless}'=='${True}'
+        Call Method    ${options}    add_argument    --headless=new
+        Call Method    ${options}    add_argument    --remote-allow-origins
+        Call Method    ${options}    add_argument    --disable-gpu
+    END
+    # Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless=new
+    # Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins
+    # Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
     ### Run in Continuous Integration ###
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
