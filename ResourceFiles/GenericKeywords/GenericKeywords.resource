@@ -88,11 +88,11 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    ${ci}=    Get Environment Variable    CI    default=${False}
-    IF    '${ci}'=='${True}'
-        Call Method    ${options}    add_argument    --disable-extensions-except=${path}
-        Call Method    ${options}    add_argument    --load-extension=${path}
-    END
+    # ${ci}=    Get Environment Variable    CI    default=${False}
+    # IF    '${ci}'=='${True}'
+    #     Call Method    ${options}    add_argument    --disable-extensions-except=${path}
+    #     Call Method    ${options}    add_argument    --load-extension=${path}
+    # END
     ### Set window size ###
     Call Method    ${options}    add_argument    --window-size\=1920,1080
     ### Disable Google Password Manager ###
