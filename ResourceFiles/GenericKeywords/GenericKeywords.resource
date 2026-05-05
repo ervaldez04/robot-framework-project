@@ -72,7 +72,11 @@ New Tab Should Open
 Open Browser With Options
     [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
+    
+    ${options}=    Evaluate    selenium.webdriver.ChromeOptions()    modules=selenium.webdriver
+    ${path}=    Set Variable    ${EXECDIR}\\Resources\\Extensions\\ublock
+
+    # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     # ${options}=    Evaluate    __import__("selenium.webdriver").webdriver.ChromeOptions()
     ### Run Headless ###
@@ -85,8 +89,8 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     ${ci}=    Get Environment Variable    CI    default=${False}
     IF    '${ci}'=='${True}'
-        Call Method    ${options}    add_argument    --disable-extensions-except=${EXECDIR}\\Resources\\Extensions\\ublock
-        Call Method    ${options}    add_argument    --load-extension=${EXECDIR}\\extensions\\ublock
+        Call Method    ${options}    add_argument    --disable-extensions-except=${path}
+        Call Method    ${options}    add_argument    --load-extension=${path}
     END
     ### Set window size ###
     Call Method    ${options}    add_argument    --window-size\=1920,1080
