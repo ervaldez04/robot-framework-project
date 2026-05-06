@@ -16,6 +16,16 @@ pipeline {
             defaultValue: 'chrome', 
             description: 'Browser to use for tests'
         )
+        choice(
+            name: 'RUN_TYPE',
+            choices: ['FOLDER', 'FILE'],
+            description: 'Run entire folder OR single robot file'
+        )
+        string(
+            name: 'TARGET',
+            defaultValue: 'TestSuite/DemoQA/ElementsModule',
+            description: 'Folder path or full .robot file path'
+        )
     }
 
     stages {
@@ -46,12 +56,17 @@ pipeline {
             steps {
                 script {
                     def headlessValue = params.HEADLESS ? "True" : "False"
+                    echi "Run Type : ${RUN_TYPE}"
+                    echo "Target    : ${params.TARGET}"
+                    echo "Browser   : ${params.BROWSER}"
+                    echo "Headless  : ${headlessValue}"
+
                     bat """
                         python -m robot ^
                         --variable BROWSER:${params.BROWSER} ^
                         --variable HEADLESS:${headlessValue} ^
                         --outputdir results ^
-                        TestSuite
+                        ${params.TARGET}
                     """
                 }
             }
