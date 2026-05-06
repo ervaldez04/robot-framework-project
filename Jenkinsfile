@@ -26,6 +26,16 @@ pipeline {
             defaultValue: 'TestSuite/DemoQA/ElementsModule',
             description: 'Folder path or full .robot file path'
         )
+        choice(
+            name: 'INCLUDE_TAG',
+            choices: ['none', 'Smoke', 'Regression', 'Performance', 'Sanity', 'Positive', 'Negative'],
+            description: 'Select a tag to include (or none)'
+        )
+        choice(
+            name: 'EXCLUDE_TAG',
+            choices: ['none', 'Slow', 'Flaky', 'Deprecated', 'Bug'],
+            description: 'Select a tag to exclude (or none)'
+        )
     }
 
     stages {
@@ -56,16 +66,24 @@ pipeline {
             steps {
                 script {
                     def headlessValue = params.HEADLESS ? "True" : "False"
+                    def includeOption = params.INCLUDE_TAG != 'none' ? "--include ${params.INCLUDE_TAG}" : ""
+                    def excludeOption = params.EXCLUDE_TAG != 'none' ? "--exclude ${params.EXCLUDE_TAG}" : ""
+                    echo "================ RUN CONFIGURATION ================"
                     echo "Run Type : ${RUN_TYPE}"
                     echo "Target    : ${params.TARGET}"
+                    echo "Include Tag  : ${params.INCLUDE_TAG != 'none' ? params.INCLUDE_TAG : 'NONE'}"
+                    echo "Exclude Tag  : ${params.EXCLUDE_TAG != 'none' ? params.EXCLUDE_TAG : 'NONE'}"
                     echo "Browser   : ${params.BROWSER}"
                     echo "Headless  : ${headlessValue}"
+                    echo "==================================================="
 
                     bat """
                         python -m robot ^
                         --variable BROWSER:${params.BROWSER} ^
                         --variable HEADLESS:${headlessValue} ^
                         --outputdir results ^
+                        ${includeOption} ^
+                        ${excludeOption} ^
                         ${params.TARGET}
                     """
                 }
