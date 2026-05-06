@@ -104,6 +104,14 @@ pipeline {
     
     post {
         always {
+            robot(
+            outputPath: 'results',
+            outputFileName: 'output.xml',
+            reportFileName: 'report.html',
+            logFileName: 'log.html',
+            passThreshold: 100,
+            unstableThreshold: 80
+        )
             archiveArtifacts artifacts: 'results/**'
         }
     }
