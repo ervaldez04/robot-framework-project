@@ -56,7 +56,7 @@ pipeline {
             steps {
                 script {
                     def headlessValue = params.HEADLESS ? "True" : "False"
-                    echi "Run Type : ${RUN_TYPE}"
+                    echo "Run Type : ${RUN_TYPE}"
                     echo "Target    : ${params.TARGET}"
                     echo "Browser   : ${params.BROWSER}"
                     echo "Headless  : ${headlessValue}"
