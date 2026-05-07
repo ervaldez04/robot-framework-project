@@ -20,9 +20,21 @@ Navigate To Broken Links Page
 Validate Redirected To Certain Page
     [Documentation]    Validate Redirected To Certain Page
     [Arguments]    ${is_valid}=${True}
-    Run Keyword If    '${is_valid}'=='${True}'    Location Should Be    ${DEMO_QA}
-    ...    ELSE IF    '${is_valid}'=='${False}'    Location Should Be    ${INVALID_LINK_URL}
-    ...    ELSE    Fail    Incorrecrt argument used!
-    Run Keyword If    '${is_valid}'=='${True}'    Title Should Be    demosite
-    ...    ELSE IF    '${is_valid}'=='${False}'    Title Should Be    The Internet
-    ...    ELSE    Fail    Incorrecrt argument used!
+    IF    '${is_valid}'=='${True}'
+        Wait Until Location Is    ${DEMO_QA}
+        Location Should Be    ${DEMO_QA}
+        Wait Until Keyword Succeeds    1 min    5 sec    Title Should Be    demosite
+    ELSE IF    '${is_valid}'=='${False}'
+        ${is_option1}=    Run Keyword And Return Status    Wait Until Location Is    ${INVALID_LINK_URL}
+        IF    '${is_option1}'=='${True}'
+            Wait Until Location Is    ${INVALID_LINK_URL1}
+            Location Should Be    ${INVALID_LINK_URL1}
+            Wait Until Keyword Succeeds    1 min    5 sec    Title Should Be    Application Error
+        ELSE
+            Wait Until Location Is    ${INVALID_LINK_URL2}
+            Location Should Be    ${INVALID_LINK_URL2}
+            Wait Until Keyword Succeeds    1 min    5 sec    Title Should Be    The Internet
+        END
+    ELSE
+        Fail    Incorrect argument used!
+    END
