@@ -85,7 +85,7 @@ Open Browser With Options
     Call Method    ${options}    add_experimental_option    prefs    ${prefs}
     ### For Headless ###
     IF    '${headless}'=='${True}'
-        Call Method    ${options}    add_argument    --headless=new
+        Call Method    ${options}    add_argument    --headless\=new
         Call Method    ${options}    add_argument    --remote-allow-origins
         Call Method    ${options}    add_argument    --disable-gpu
     END
