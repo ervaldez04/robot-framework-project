@@ -16,11 +16,11 @@ HEADLESS = False
 GITHUB_ACTIONS = False
 
 ### ON/OFF YES/NO TRUE/FALSE ##
-FALSE = "false"
+# FALSE = "false"
 NO = "NO"
 OFF = "OFF"
 ON = "ON"
-TRUE = "true"
+# TRUE = "true"
 YES = "YES"
 
 ### ALERT ###

@@ -11,13 +11,14 @@ Wait And Click
     Wait Until Element Is Visible    ${locator}    ${timeout}
     Wait Until Element Is Enabled    ${locator}    ${timeout}
     ${element}=    Get WebElement    ${locator}
-    Scroll Element Into View    ${locator}
-    Press Keys    None    PAGE_DOWN
-    Press Keys    None    PAGE_DOWN
+    # Scroll Element Into View    ${locator}
+    # Press Keys    None    PAGE_DOWN
+    # Press Keys    None    PAGE_DOWN
     # Press Keys    None    PAGE_UP
     ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
     IF    not ${is_clicked}
         Log    Click intercepted – scrolling more and retrying
+        Scroll Element Into View    ${locator}
         Press Keys    None    PAGE_UP
         # Press Keys    None    PAGE_UP
         Click Element    ${locator}
@@ -71,19 +72,23 @@ New Tab Should Open
 
 Open Browser With Options
     [Documentation]    Open Browser With Options
-    [Arguments]    ${url}    ${browser}    ${headless}
+    [Arguments]    ${url}    ${browser}    ${headless}    ${disable_password_manager}=${True}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
     # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
     # ${options}=    Evaluate    __import__("selenium.webdriver").webdriver.ChromeOptions()
-    ### Run Headless ###
+    ### For Download ###
+    Create Directory    ${DOWNLOAD_DIRECTORY}
+    Log    ${EXECDIR}
+    Log    ${DOWNLOAD_DIRECTORY}
+    ${prefs}=    Create Dictionary    download.default_directory=${EXECDIR}${/}${DOWNLOAD_DIRECTORY}    download.prompt_for_download=${False}
+    ...    download.directory_upgrade=${True}    plugins.always_open_pdf_externally=${True}    safebrowsing.enabled=${True}
+    Call Method    ${options}    add_experimental_option    prefs    ${prefs}
+    ### For Headless ###
     IF    '${headless}'=='${True}'
-        Call Method    ${options}    add_argument    --headless=new
+        Call Method    ${options}    add_argument    --headless\=new
         Call Method    ${options}    add_argument    --remote-allow-origins
         Call Method    ${options}    add_argument    --disable-gpu
     END
-    # Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --headless=new
-    # Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --remote-allow-origins
-    # Run Keyword If    '${headless}'=='${True}'    Call Method    ${options}    add_argument    --disable-gpu
     ### Run in Continuous Integration ###
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
@@ -96,9 +101,11 @@ Open Browser With Options
     ### Set window size ###
     Call Method    ${options}    add_argument    --window-size\=1920,1080
     ### Disable Google Password Manager ###
-    Call Method    ${options}    add_argument    --disable-automation-extension
-    Call Method    ${options}    add_argument    --disable-infobars
-    Call Method    ${options}    add_argument    --incognito
+    IF    '${disable_password_manager}'=='${True}'
+        Call Method    ${options}    add_argument    --disable-automation-extension
+        Call Method    ${options}    add_argument    --disable-infobars
+        Call Method    ${options}    add_argument    --incognito
+    END
     Log    ${options}
 
     # Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
@@ -108,7 +115,6 @@ Open Browser With Options
     ...    sys
     Open Browser    ${url}    ${browser}    options=${options}    service=${service}
     Run Keyword If    '${headless}'=='${False}'    Maximize Browser Window
-
     Run Keyword If    '${headless}'=='${True}'    Set Selenium Timeout    10s
     Run Keyword If    '${headless}'=='${True}'    Set Selenium Speed      0.5s
 
