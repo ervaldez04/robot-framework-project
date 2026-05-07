@@ -8,9 +8,9 @@ Select Type Of Click for Click Me
     [Documentation]    Select Type Of Click for Click Me
     [Arguments]    ${selected_button}
     Wait Until Element Is Visible    ${CLICK_ME_BUTTON}
-    Scroll Element Into View    ${CLICK_ME_BUTTON}
-    Set Focus To Element    ${CLICK_ME_BUTTON}
-    Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Double Click Element    ${CLICK_ME_BUTTON}
+    # Scroll Element Into View    ${CLICK_ME_BUTTON}
+    # Set Focus To Element    ${CLICK_ME_BUTTON}
+    Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Wait And Double Click    ${CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
@@ -19,9 +19,9 @@ Select Type Of Click for Double Click Me
     [Documentation]    Select Type Of Click for Double Click Me
     [Arguments]    ${selected_button}
     Wait Until Element Is Visible    ${DOUBLE_CLICK_ME_BUTTON}
-    Scroll Element Into View    ${DOUBLE_CLICK_ME_BUTTON}
-    Set Focus To Element    ${DOUBLE_CLICK_ME_BUTTON}
-    Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Double Click Element    ${DOUBLE_CLICK_ME_BUTTON}
+    # Scroll Element Into View    ${DOUBLE_CLICK_ME_BUTTON}
+    # Set Focus To Element    ${DOUBLE_CLICK_ME_BUTTON}
+    Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Wait And Double Click    ${DOUBLE_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${DOUBLE_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${DOUBLE_CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
@@ -30,9 +30,9 @@ Select Type Of Click for Right Click Me
     [Documentation]    Select Type Of Click for Right Click Me
     [Arguments]    ${selected_button}
     Wait Until Element Is Visible    ${RIGHT_CLICK_ME_BUTTON}
-    Scroll Element Into View    ${RIGHT_CLICK_ME_BUTTON}
-    Set Focus To Element    ${RIGHT_CLICK_ME_BUTTON}
-    Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Double Click Element    ${RIGHT_CLICK_ME_BUTTON}
+    # Scroll Element Into View    ${RIGHT_CLICK_ME_BUTTON}
+    # Set Focus To Element    ${RIGHT_CLICK_ME_BUTTON}
+    Run Keyword If    '${selected_button}'=='${DOUBLE_CLICK}'    Wait And Double Click    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
