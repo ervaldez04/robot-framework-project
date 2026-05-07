@@ -8,6 +8,7 @@ DEMO_QA_CHECK_BOX = "https://demoqa.com/checkbox"
 DEMO_QA_LINKS = "https://demoqa.com/links"
 DEMO_QA_RADIO_BUTTON = "https://demoqa.com/radio-button"
 DEMO_QA_TEXT_BOX = "https://demoqa.com/text-box"
+DEMO_QA_UPLOAD_DOWNLOAD = "https://demoqa.com/upload-download"
 DEMO_QA_WEB_TABLES = "https://demoqa.com/webtables"
 
 ### Text Box Page ###
@@ -114,3 +115,14 @@ UNAUTHORIZED = "Unauthorized"
 
 ### Broken Links Page ###
 INVALID_LINK_URL = "https://the-internet.herokuapp.com/status_codes/500"
+
+### Upload and Download Page ###
+DOWNLOAD_DIRECTORY = "downloads"
+DOWNLOAD_FILE = "sampleFile.jpeg"
+FILES = "Files/"
+IMAGES = "Images/"
+IMAGE_FILE = "Sample_Image.png"
+NON_EXISTING_FILE = "Non_Existing.pdf"
+PDF_FILE = "Sample_Document.pdf"
+RESOURCE_FILE = "/Resources/"
+ZIP_FILE = "Sample_Zip.zip"
