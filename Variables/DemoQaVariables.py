@@ -114,7 +114,8 @@ NOT_FOUND = "Not Found"
 UNAUTHORIZED = "Unauthorized"
 
 ### Broken Links Page ###
-INVALID_LINK_URL = "https://the-internet.herokuapp.com/status_codes/500"
+INVALID_LINK_URL1 = "http://the-internet.herokuapp.com/status_codes/500"
+INVALID_LINK_URL2 = "https://the-internet.herokuapp.com/status_codes/500"
 
 ### Upload and Download Page ###
 DOWNLOAD_DIRECTORY = "downloads"
