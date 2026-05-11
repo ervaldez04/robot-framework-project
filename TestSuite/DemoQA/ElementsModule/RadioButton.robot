@@ -33,4 +33,4 @@ Validate No Radio Button is disabled
     [Tags]    Regression    Positive
     ${no_state}    Select No Radio Button
     Validate No Radio Button Is Disabled    ${no_state}
-    Validate Result    ${FALSE}
+    Validate Result    ${False}

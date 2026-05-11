@@ -51,8 +51,23 @@ Validate State of Radio Buttons
     [Documentation]    Validate State of Radio Buttons
     [Arguments]    ${yes_state}=${None}    ${impressive_state}=${None}    ${no_state}=${None}
     ${is_yes_checked}=    Get Element Attribute    ${YES_RADIO_BUTTON}    checked
+    IF    '${yes_state}'=='${None}'
+        Log    Yes is not selected
+    ELSE
+        ${is_yes_checked}=    Convert To Boolean    ${is_yes_checked}
+    END
     Run Keyword And Continue On Failure    Should Be Equal    ${is_yes_checked}    ${yes_state}
     ${is_impressive_checked}=    Get Element Attribute    ${IMPRESSIVE_RADIO_BUTTON}    checked
+    IF    '${impressive_state}'=='${None}'
+        Log    Impressive is not selected
+    ELSE
+        ${is_impressive_checked}=    Convert To Boolean    ${is_impressive_checked}
+    END
     Run Keyword And Continue On Failure    Should Be Equal    ${is_impressive_checked}    ${impressive_state}
     ${is_no_checked}=    Get Element Attribute    ${NO_RADIO_BUTTON}    checked
+    IF    '${no_state}'=='${None}'
+        Log    No is not selected
+    ELSE
+        ${is_no_checked}=    Convert To Boolean    ${is_no_checked}
+    END
     Run Keyword And Continue On Failure    Should Be Equal    ${is_no_checked}    ${no_state}
