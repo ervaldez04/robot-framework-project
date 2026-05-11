@@ -39,27 +39,6 @@ Expand And Set Checkbox
     ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${False}'    Wait And Click    ${locator}
     ...    ELSE    Fail    Choose either True or False!
 
-    # ### Expand menu until the target menu is visible ###
-    # ${menu_locator}=    Set Variable    //span[@class="rc-tree-title" and text()="${label}"]
-    # # Run Keyword Unless    Element Should Be Visible    xpath=//span[@class="rct-title" and text()="${label}"]    Click Element    xpath=(//button[contains(@class,"rct-collapse")])[1]
-    # WHILE    Element Not Visible    ${menu_locator}
-    #     [Arguments]    ${locator}
-    #     Click Element    xpath=(//button[contains(@class,"rct-collapse")])[1]
-    #     Sleep    0.5s
-    # END
-    # ${locator}=    Set Variable    //span[@class="rc-tree-title" and text()="${label}"]/../preceding-sibling::span[@class="rc-tree-checkbox"]
-    # ### Check if check boX is checked or unchecked ###
-    # ${is_checked}    Get Element Attribute    ${locator}    aria-checked
-    # ### Set check box of label ###
-    # Run Keyword If    '${is_checked}'=='${FALSE}' and '${check}'=='${True}'    Click Element    ${locator}
-    # ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${True}'    Log    Check Box is already checked
-    # ...    ELSE IF    '${is_checked}'=='${FALSE}' and '${check}'=='${False}'    Log    Check Box is already unchecked
-    # ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${False}'    Click Element    ${locator}
-    # ...    ELSE    Fail    Choose either True or False!
-    # # Scroll Element Into View    ${locator}
-    # # Click Element               ${locator}
-    # # Wait Until Element Attribute Value Is    ${locator}    class    rct-checkbox rct-checkbox-checked    timeout=5s
-
 Navigate To Check Box Page
     [Documentation]    Navigate to Check Box Page
     Go To    ${DEMO_QA_CHECK_BOX}
@@ -73,7 +52,7 @@ Navigate To Check Box Page And Set Check Box
 Set Home Check Box
     [Documentation]    Set Home Check Box
     [Arguments]    ${home_check}=${True}
-    ### Check if check bos is checked or unchecked ###
+    ### Check if check box is checked or unchecked ###
     ${is_checked}=    Get Element Attribute    ${HOME_CHECK_BOX}    aria-checked
     Run Keyword If    '${is_checked}'=='${FALSE}' and '${home_check}'=='${True}'    Wait And Click    ${HOME_CHECK_BOX}
     ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${home_check}'=='${True}'    Log    Check Box is already checked
