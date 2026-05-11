@@ -4,58 +4,6 @@ Documentation     Generic Keywords that can be used in any testing site
 Resource          ../../Configurations/ImportGenericFile/GenericFile.robot
 
 *** Keywords ***
-Wait And Click
-    [Documentation]    Wait And Click
-    ...    Use Click Element instead of Click Button / Click Link (it is universal)
-    [Arguments]    ${locator}    ${timeout}=10s
-    Wait Until Element Is Visible    ${locator}    ${timeout}
-    Wait Until Element Is Enabled    ${locator}    ${timeout}
-    ${element}=    Get WebElement    ${locator}
-    # Scroll Element Into View    ${locator}
-    # Press Keys    None    PAGE_DOWN
-    # Press Keys    None    PAGE_DOWN
-    # Press Keys    None    PAGE_UP
-    ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
-    IF    not ${is_clicked}
-        Log    Click intercepted – scrolling more and retrying
-        Scroll Element Into View    ${locator}
-        Press Keys    None    PAGE_UP
-        # Press Keys    None    PAGE_UP
-        Click Element    ${locator}
-    END
-
-    # Run Keyword If    '${is_clicked}'=='${True}'    Log    Click Element is used
-    # ...    ELSE    Run Keywords    Execute Javascript    arguments[0].scrollIntoView({block: 'center'});    ${element}
-    # ...    AND    Execute Javascript    arguments[0].click();    ${element}
-    # Execute Javascript    arguments[0].click();    ${locator}
-    # Click Element    ${locator}
-
-# ### For Flaky ###
-# Wait And Click With Retry
-#     [Documentation]    Retries click once if the first click fails due to animation or overlay.
-#     [Arguments]    ${locator}    ${timeout}=10s
-#     Wait Until Element Is Visible    ${locator}    ${timeout}
-#     Wait Until Element Is Enabled    ${locator}    ${timeout}
-#     Scroll Element Into View    ${locator}
-#     Run Keyword And Ignore Error    Click Element    ${locator}
-#     Sleep    500ms
-#     Click Element    ${locator}
-
-Wait And Double Click
-    [Documentation]    Wait And Double Click
-    [Arguments]    ${locator}    ${timeout}=10s
-    Wait Until Element Is Visible    ${locator}    ${timeout}
-    Wait Until Element Is Enabled    ${locator}    ${timeout}
-    ${element}=    Get WebElement    ${locator}
-    Set Focus To Element    ${locator}
-    ${is_double_clicked}=    Run Keyword And Return Status    Double Click Element    ${locator}
-    IF    not ${is_double_clicked}
-        Log    Click intercepted – scrolling more and retrying
-        Scroll Element Into View    ${locator}
-        Press Keys    None    PAGE_UP
-        Double Click Element    ${locator}
-    END
-
 Is Element Not Visible
     [Documentation]    Is Element Not Visible
     ${TARGET_LOCATOR}=    Set Variable    ${None}
@@ -89,12 +37,8 @@ Open Browser With Options
     [Documentation]    Open Browser With Options
     [Arguments]    ${url}    ${browser}    ${headless}    ${disable_password_manager}=${True}
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    # ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    # ${options}=    Evaluate    __import__("selenium.webdriver").webdriver.ChromeOptions()
     ### For Download ###
     Create Directory    ${DOWNLOAD_DIRECTORY}
-    Log    ${EXECDIR}
-    Log    ${DOWNLOAD_DIRECTORY}
     ${prefs}=    Create Dictionary    download.default_directory=${EXECDIR}${/}${DOWNLOAD_DIRECTORY}    download.prompt_for_download=${False}
     ...    download.directory_upgrade=${True}    plugins.always_open_pdf_externally=${True}    safebrowsing.enabled=${True}
     Call Method    ${options}    add_experimental_option    prefs    ${prefs}
@@ -108,11 +52,6 @@ Open Browser With Options
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-setuid-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    # ${ci}=    Get Environment Variable    CI    default=${False}
-    # IF    '${ci}'=='${True}'
-    #     Call Method    ${options}    add_argument    --disable-extensions-except=${path}
-    #     Call Method    ${options}    add_argument    --load-extension=${path}
-    # END
     ### Set window size ###
     Call Method    ${options}    add_argument    --window-size\=1920,1080
     ### Disable Google Password Manager ###
@@ -122,9 +61,6 @@ Open Browser With Options
         Call Method    ${options}    add_argument    --incognito
     END
     Log    ${options}
-
-    # Create WebDriver    ${WEBDRIVER_CHROME}    options=${options}
-
     Set Timeout If Jenkins
     ${service}=    Evaluate    sys.modules['selenium.webdriver.chrome.service'].Service(log_output="chromedriver.log")
     ...    sys
@@ -157,6 +93,36 @@ Update Field If Provided
     [Arguments]    ${keyword}    ${value}
     Run Keyword If    '${value}'=='${EMPTY}'    Log    No update for ${keyword}
     ...    ELSE    Run Keyword    ${keyword}    ${value}
+
+Wait And Click
+    [Documentation]    Wait And Click
+    ...    Use Click Element instead of Click Button / Click Link (it is universal)
+    [Arguments]    ${locator}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Wait Until Element Is Enabled    ${locator}    ${timeout}
+    ${element}=    Get WebElement    ${locator}
+    ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
+    IF    not ${is_clicked}
+        Log    Click intercepted – scrolling more and retrying
+        Scroll Element Into View    ${locator}
+        Press Keys    None    PAGE_UP
+        Click Element    ${locator}
+    END
+
+Wait And Double Click
+    [Documentation]    Wait And Double Click
+    [Arguments]    ${locator}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Wait Until Element Is Enabled    ${locator}    ${timeout}
+    ${element}=    Get WebElement    ${locator}
+    Set Focus To Element    ${locator}
+    ${is_double_clicked}=    Run Keyword And Return Status    Double Click Element    ${locator}
+    IF    not ${is_double_clicked}
+        Log    Click intercepted – scrolling more and retrying
+        Scroll Element Into View    ${locator}
+        Press Keys    None    PAGE_UP
+        Double Click Element    ${locator}
+    END
 
 ### VALIDATION ###
 Validate Field Type
