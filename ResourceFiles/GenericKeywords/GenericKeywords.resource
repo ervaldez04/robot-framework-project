@@ -101,6 +101,7 @@ Wait And Click
     Wait Until Element Is Visible    ${locator}    ${timeout}
     Wait Until Element Is Enabled    ${locator}    ${timeout}
     ${element}=    Get WebElement    ${locator}
+    Set Focus To Element    ${locator}
     ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
     IF    not ${is_clicked}
         Log    Click intercepted – scrolling more and retrying
