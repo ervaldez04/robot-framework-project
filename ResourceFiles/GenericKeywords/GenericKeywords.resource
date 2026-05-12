@@ -4,21 +4,6 @@ Documentation     Generic Keywords that can be used in any testing site
 Resource          ../../Configurations/ImportGenericFile/GenericFile.robot
 
 *** Keywords ***
-Wait And Click
-    [Documentation]    Wait And Click
-    ...    Use Click Element instead of Click Button / Click Link (it is universal)
-    [Arguments]    ${locator}    ${timeout}=10s
-    Wait Until Element Is Visible    ${locator}    ${timeout}
-    Wait Until Element Is Enabled    ${locator}    ${timeout}
-    ${element}=    Get WebElement    ${locator}
-    ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
-    IF    not ${is_clicked}
-        Log    Click intercepted – scrolling more and retrying
-        Scroll Element Into View    ${locator}
-        Press Keys    None    PAGE_UP
-        Click Element    ${locator}
-    END
-
 Is Element Not Visible
     [Documentation]    Is Element Not Visible
     ${TARGET_LOCATOR}=    Set Variable    ${None}
@@ -108,6 +93,36 @@ Update Field If Provided
     [Arguments]    ${keyword}    ${value}
     Run Keyword If    '${value}'=='${EMPTY}'    Log    No update for ${keyword}
     ...    ELSE    Run Keyword    ${keyword}    ${value}
+
+Wait And Click
+    [Documentation]    Wait And Click
+    ...    Use Click Element instead of Click Button / Click Link (it is universal)
+    [Arguments]    ${locator}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Wait Until Element Is Enabled    ${locator}    ${timeout}
+    ${element}=    Get WebElement    ${locator}
+    ${is_clicked}=    Run Keyword And Return Status    Click Element    ${locator}
+    IF    not ${is_clicked}
+        Log    Click intercepted – scrolling more and retrying
+        Scroll Element Into View    ${locator}
+        Press Keys    None    PAGE_UP
+        Click Element    ${locator}
+    END
+
+Wait And Double Click
+    [Documentation]    Wait And Double Click
+    [Arguments]    ${locator}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Wait Until Element Is Enabled    ${locator}    ${timeout}
+    ${element}=    Get WebElement    ${locator}
+    Set Focus To Element    ${locator}
+    ${is_double_clicked}=    Run Keyword And Return Status    Double Click Element    ${locator}
+    IF    not ${is_double_clicked}
+        Log    Click intercepted – scrolling more and retrying
+        Scroll Element Into View    ${locator}
+        Press Keys    None    PAGE_UP
+        Double Click Element    ${locator}
+    END
 
 ### VALIDATION ###
 Validate Field Type
