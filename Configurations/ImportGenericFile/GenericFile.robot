@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation    Generic File
 
 ### Libraries ###
 Library    Collections

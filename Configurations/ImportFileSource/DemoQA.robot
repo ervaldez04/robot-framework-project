@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Keywords of Demo QA
+
 Resource    ../../ResourceFiles/SourceKeywords/DemoQA/BrokenLinksPage.resource
 Resource    ../../ResourceFiles/SourceKeywords/DemoQA/ButtonsPage.resource
 Resource    ../../ResourceFiles/SourceKeywords/DemoQA/CheckBoxPage.resource

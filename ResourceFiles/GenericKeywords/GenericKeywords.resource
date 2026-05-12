@@ -70,7 +70,7 @@ Open Browser With Options
     Run Keyword If    '${headless}'=='${True}'    Set Selenium Speed      0.5s
 
 Set Timeout If Jenkins
-    [Documentation]    Add Timeout when running in Jenkins to fix flaky test
+    [Documentation]    Set Timeout If Jenkins
     ${ci}=    Get Environment Variable    CI    default=${False}
     Run Keyword If    '${ci}'=='${True}'    Set Selenium Timeout    10s
 
