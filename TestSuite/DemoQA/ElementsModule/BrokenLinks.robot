@@ -2,7 +2,7 @@
 Documentation     Test Case for Demo QA - Elements Module - Broken Links
 Resource          ../../../Configurations/ImportFileSource/DemoQA.robot
 Test Tags         DemoQA_Elements_BrokenLinks
-Suite Setup       Open Browser With Options   ${DEMO_QA}    ${BROWSER}    ${HEADLESS}
+Suite Setup       Open Browser With Options   ${DEMO_QA}    ${BROWSER}    ${HEADLESS}    disable_password_manager=${False}
 Suite Teardown    Close All Browsers
 Test Setup        Navigate To Broken Links Page
 
