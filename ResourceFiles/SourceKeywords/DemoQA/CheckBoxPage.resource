@@ -32,6 +32,7 @@ Expand And Set Checkbox
     ${locator}=    Set Variable    ${TARGET_LOCATOR}/../preceding-sibling::span[contains(@class, "rc-tree-checkbox")]
     ### Check if check box is checked or unchecked ###
     ${is_checked}=    Get Element Attribute    ${locator}    aria-checked
+    ${is_checked}=    Convert To Boolean    ${is_checked}
     ### Set check box of label ###
     Run Keyword If    '${is_checked}'=='${FALSE}' and '${check}'=='${True}'    Wait And Click    ${locator}
     ...    ELSE IF    '${is_checked}'=='${TRUE}' and '${check}'=='${True}'    Log    Check Box is already checked
