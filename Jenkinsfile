@@ -33,7 +33,7 @@ pipeline {
         )
         choice(
             name: 'EXCLUDE_TAG',
-            choices: ['none', 'Slow', 'Flaky', 'Deprecated', 'Bug'],
+            choices: ['none', 'Slow', 'Flaky', 'Deprecated', 'Bug', 'Blocked'],
             description: 'Select a tag to exclude (or none)'
         )
     }

@@ -164,7 +164,7 @@ Validate if able to delete existing data
 
 Validate if able to create new record
     [Documentation]    Ceate new record
-    [Tags]    Regression    Positive
+    [Tags]    Smoke    Regression    Positive
     [Setup]    Navigate To Web Tables Page
     Add Record    ${ADDED_FIRST_NAME}    ${ADDED_LAST_NAME}
     ...    ${ADDED_EMAIL}    ${ADDED_AGE}    ${ADDED_SALARY}    ${ADDED_DEPARTMENT}
