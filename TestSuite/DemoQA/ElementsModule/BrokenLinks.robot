@@ -9,10 +9,12 @@ Test Setup        Navigate To Broken Links Page
 *** Test Cases ***
 Validate when Valid Link is clicked
     [Documentation]    Valid Link is clicked
+    [Tags]    Smoke    Regression    Positive
     Click Valid Link
     Validate Redirected To Certain Page
 
 Validate when Invalid Link is clicked
     [Documentation]    Invalid Link is clicked
+    [Tags]    Regression    Positive
     Click Invalid Link
     Validate Redirected To Certain Page    ${False}

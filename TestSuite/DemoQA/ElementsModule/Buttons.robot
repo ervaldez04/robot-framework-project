@@ -21,7 +21,7 @@ Validate when Right Click button is clicked
 
 Validate when Click button is clicked
     [Documentation]    Click the button Click Me
-    [Tags]    Regression    Positive
+    [Tags]    Smoke    Regression    Positive
     Select Type Of Click for Click Me    ${CLICK}
     Validate Button Message    ${CLICK}
 

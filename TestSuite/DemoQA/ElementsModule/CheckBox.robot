@@ -16,7 +16,7 @@ Validate if Home Check Box is checked
 
 Validate if Home Check Box is unchecked
     [Documentation]    Home Check Box is unchecked
-    [Tags]    Smoke    Regression    Negative
+    [Tags]    Regression    Negative
     [Setup]    Navigate To Check Box Page And Set Check Box    ${HOME_CHECKBOX}
     Expand And Set Checkbox    ${HOME_CHECKBOX}    ${False}
     Validate Display Result    ${False}
