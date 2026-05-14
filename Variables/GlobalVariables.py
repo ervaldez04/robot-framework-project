@@ -25,3 +25,8 @@ YES = "YES"
 
 ### ALERT ###
 ACCEPT = "ACCEPT"
+
+### Resource File ###
+FILES = "Files/"
+IMAGES = "Images/"
+RESOURCE_FILE = "/Resources/"

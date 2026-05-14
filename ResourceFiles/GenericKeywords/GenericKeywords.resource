@@ -16,7 +16,15 @@ Is Element Not Visible
 
 Get System Date
     [Documentation]    Generate system date
-    ${date}    Get Current Date    result_format=%Y-%m-%d
+    [Arguments]    ${format_date}=%d    ${format_month_year}=%Y-%m    ${separator}=${EMPTY}    ${remove_leading_zero}=${True}
+    ${day}=    Get Current Date    result_format=${format_date}
+    ${rest}=    Get Current Date    result_format=${format_month_year}
+    IF    '${remove_leading_zero}'=='${True}'
+        ${day}=    Replace String    ${day}    0    ${EMPTY}    count=1
+        ${date}=    Set Variable    ${day}${separator}${rest}
+    ELSE
+        ${date}=    Set Variable    ${day}${separator}${rest}
+    END
     Log    ${date}
     RETURN    ${date}
 
@@ -106,7 +114,8 @@ Wait And Click
     IF    not ${is_clicked}
         Log    Click intercepted – scrolling more and retrying
         Scroll Element Into View    ${locator}
-        Press Keys    None    PAGE_UP
+        Press Keys    ${locator}    PAGE_DOWN
+        Set Focus To Element    ${locator}
         Click Element    ${locator}
     END
 
@@ -121,8 +130,25 @@ Wait And Double Click
     IF    not ${is_double_clicked}
         Log    Click intercepted – scrolling more and retrying
         Scroll Element Into View    ${locator}
-        Press Keys    None    PAGE_UP
+        Press Keys    ${locator}    PAGE_DOWN
+        Set Focus To Element    ${locator}
         Double Click Element    ${locator}
+    END
+
+Wait And Input Text
+    [Documentation]    Wait And Input Text
+    [Arguments]    ${locator}    ${text}    ${timeout}=10s
+    Wait Until Element Is Visible    ${locator}    ${timeout}
+    Wait Until Element Is Enabled    ${locator}    ${timeout}
+    ${element}=    Get WebElement    ${locator}
+    Set Focus To Element    ${locator}
+    ${is_entered}=    Run Keyword And Return Status    Input Text    ${locator}    ${text}
+    IF    not ${is_entered}
+        Log    Enter Text intercepted – scrolling more and retrying
+        Scroll Element Into View    ${locator}
+        Press Keys    ${locator}    PAGE_DOWN
+        Set Focus To Element    ${locator}
+        Input Text    ${locator}    ${text}
     END
 
 ### VALIDATION ###
