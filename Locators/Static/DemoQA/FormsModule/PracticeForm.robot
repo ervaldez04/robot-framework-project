@@ -1,0 +1,26 @@
+### Note: arrange alhabetically ###
+### Demo QA - Forms Module - Practice Form Window ###
+
+*** Variables ***
+${STUDENT_CITY_FIELD}                 //input[@id='react-select-4-input']
+${STUDENT_CURRENT_ADDRESS_FIELD}      //textarea[@id='currentAddress']
+${STUDENT_DATE_OF_BIRTH_FIELD}        //input[@id='dateOfBirthInput']
+${STUDENT_EMAIL_FIELD}                //input[@id='userEmail']
+${STUDENT_FEMALE_RADIO_BUTTON}        //input[@value='Female']
+${STUDENT_FIRST_NAME_FIELD}           //input[@id='firstName']
+${STUDENT_FORM_MODAL}                 //div[@class='modal-content']
+${STUDENT_FORM_MODAL_CLOSE_BUTTON}    //button[@id='closeLargeModal']
+${STUDENT_HOBBIES_CHECK_BOX}          //input[contains(@id,'hobbies')]
+${STUDENT_LAST_NAME_FIELD}            //input[@id='lastName']
+${STUDENT_MALE_RADIO_BUTTON}          //input[@value='Male']
+${STUDENT_MOBILE_FIELD}               //input[@id='userNumber']
+${STUDENT_MONTH_OF_BIRTH_OPTION}      //select[contains(@class,'month')]
+${STUDENT_MUSIC_CHECK_BOX}            //input[@id='hobbies-checkbox-3']
+${STUDENT_OTHER_RADIO_BUTTON}         //input[@value='Other']
+${STUDENT_READING_CHECK_BOX}          //input[@id='hobbies-checkbox-2']
+${STUDENT_SPORTS_CHECK_BOX}           //input[@id='hobbies-checkbox-1']
+${STUDENT_STATE_FIELD}                //input[@id='react-select-3-input']
+${STUDENT_SUBJECTS_FIELD}             //input[@id='subjectsInput']
+${STUDENT_SUBMIT_BUTTON}              //button[@id='submit']
+${STUDENT_YEAR_OF_BIRTH_OPTION}       //select[contains(@class,'year')]
+${UPLOAD_PICTURE}                     //input[@id='uploadPicture']
