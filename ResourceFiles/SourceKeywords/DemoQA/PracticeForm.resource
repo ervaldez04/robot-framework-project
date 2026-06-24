@@ -32,6 +32,9 @@ Enter Student Mobile
     [Documentation]    Enter Student Mobile
     [Arguments]    ${student_mobile}=${EMPTY}
     Input Text    ${STUDENT_MOBILE_FIELD}    ${student_mobile}
+    ${max_length}=    Get Element Attribute    ${STUDENT_MOBILE_FIELD}    maxlength
+    ${accepted_mobile}=    Set Variable    ${student_mobile}[0:${max_length}]
+    Set Global Variable    ${STUDENT_TRUNC_MOBILE}    ${accepted_mobile}
 
 Navigate To Practice Form Page
     [Documentation]    Navigate To Practice Form Page
@@ -75,11 +78,17 @@ Select City
     [Documentation]    Select City
     [Arguments]    ${city}
     Return From Keyword If    '${city}'=='${EMPTY}'
-    Wait And Input Text    ${STUDENT_CITY_FIELD}    ${city}
-    # Log Source
-    ${locator}    Replace String    ${STUDENT_CITY_OPTION}    city_    ${city}
-    Wait Until Element Is Visible   ${locator}
-    Click Element    ${locator}
+    ${is_enabled}=    Run Keyword And Return Status    Element Should Be Enabled    ${STUDENT_CITY_FIELD}
+    IF    '${is_enabled}'=='${False}'
+        Log    Student City field is disabled, cannot select city
+        RETURN
+    ELSE
+        Wait And Input Text    ${STUDENT_CITY_FIELD}    ${city}
+        # Log Source
+        ${locator}    Replace String    ${STUDENT_CITY_OPTION}    city_    ${city}
+        Wait Until Element Is Visible   ${locator}
+        Click Element    ${locator}
+    END
 
 Select Gender
     [Documentation]    Select Gender
@@ -161,11 +170,17 @@ Select Subject
     
 Upload Student Picture
     [Documentation]    Upload Student Picture
-    [Arguments]    ${file_path}    ${file_name}
+    [Arguments]    ${file_path}=${EMPTY}    ${file_name}=${EMPTY}
     Return From Keyword If    '${file_name}'=='${EMPTY}'
     Choose File    ${UPLOAD_PICTURE}    ${file_path}${file_name}
 
 ### VALIDATION ###
+Validate Default Value Of Date Of Birth
+    [Documentation]    Validate Default Value Of Date Of Birth
+    ${actual}=    Get Element Attribute    ${STUDENT_DATE_OF_BIRTH_FIELD}    value
+    ${current_date}=    Get System Date    %d    %b %Y    separator=${SPACE}    remove_leading_zero=${False}
+    Should Be Equal    ${actual}    ${current_date}
+
 Validate Student Address
     [Documentation]    Validate Student Address
     [Arguments]    ${student_address}
@@ -186,7 +201,7 @@ Validate Student Date Of Birth
     ${locator}    Replace String    ${STUDENT_RECORD_DATA}    label_name    Date of Birth
     ${actual}=     Get Text    ${locator}
     IF    '${student_month_of_birth}'=='${EMPTY}' and '${student_year_of_birth}'=='${EMPTY}' and '${student_day_of_birth}'=='${EMPTY}'
-        ${current_date}=    Get System Date    %d    %B,%Y    separator=${SPACE}
+        ${current_date}=    Get System Date    %d    %B,%Y    separator=${SPACE}    remove_leading_zero=${False}
         Should Be Equal    ${actual}    ${current_date}
         Log    Since Date of Birth is empty, current date is used instead
     ELSE
