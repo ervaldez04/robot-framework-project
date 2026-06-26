@@ -3,11 +3,13 @@
 ### URLs ###
 DEMO_QA = "https://demoqa.com/"
 DEMO_QA_BROKEN_LINKS = "https://demoqa.com/broken"
+DEMO_QA_BROWSER_WINDOWS = "https://demoqa.com/browser-windows"
 DEMO_QA_BUTTONS = "https://demoqa.com/buttons"
 DEMO_QA_CHECK_BOX = "https://demoqa.com/checkbox"
 DEMO_QA_LINKS = "https://demoqa.com/links"
 DEMO_QA_PRACTICE_FORM = "https://demoqa.com/automation-practice-form"
 DEMO_QA_RADIO_BUTTON = "https://demoqa.com/radio-button"
+DEMO_QA_SAMPLE = "https://demoqa.com/sample"
 DEMO_QA_TEXT_BOX = "https://demoqa.com/text-box"
 DEMO_QA_UPLOAD_DOWNLOAD = "https://demoqa.com/upload-download"
 DEMO_QA_WEB_TABLES = "https://demoqa.com/webtables"
@@ -144,3 +146,7 @@ STUDENT_PICTURE = "Student_Picture.png"
 STUDENT_STATE = "NCR"
 STUDENT_SUBJECTS = ["Math", "Physics", "Social Studies"]
 STUDENT_YOB = "1995"
+
+### Browser Windows Page ###
+NEW_TAB_WINDOW_PAGE = "This is a sample page"
+NEW_WINDOW_MESSAGE = "Knowledge increases by sharing but not by saving."

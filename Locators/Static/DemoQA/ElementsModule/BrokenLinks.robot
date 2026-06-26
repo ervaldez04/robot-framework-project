@@ -3,4 +3,4 @@
 
 *** Variables ***
 ${INVALID_LINK}    //a[normalize-space()='Click Here for Broken Link']
-${VALID_LINK}     //a[normalize-space()='Click Here for Valid Link']
+${VALID_LINK}      //a[normalize-space()='Click Here for Valid Link']
