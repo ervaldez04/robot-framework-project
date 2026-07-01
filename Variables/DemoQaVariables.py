@@ -2,6 +2,7 @@
 
 ### URLs ###
 DEMO_QA = "https://demoqa.com/"
+DEMO_QA_ALERTS = "https://demoqa.com/alerts"
 DEMO_QA_BROKEN_LINKS = "https://demoqa.com/broken"
 DEMO_QA_BROWSER_WINDOWS = "https://demoqa.com/browser-windows"
 DEMO_QA_BUTTONS = "https://demoqa.com/buttons"
@@ -150,3 +151,14 @@ STUDENT_YOB = "1995"
 ### Browser Windows Page ###
 NEW_TAB_WINDOW_PAGE = "This is a sample page"
 NEW_WINDOW_MESSAGE = "Knowledge increases by sharing but not by saving."
+
+### Alerts Page ###
+ALERT_ACCEPT = "accept"
+ALERT_DISMISS = "dismiss"
+ALERT_MESSAGE = "You clicked a button"
+ALERT_NAME = "Cathy Marcus"
+CONFIRM_ALERT_MESSAGE = "Do you confirm action?"
+CONFIRM_CANCEL_MESSAGE = "You selected Cancel"
+CONFIRM_YES_MESSAGE = "You selected Ok"
+PROMPT_MESSAGE = "You entered " + ALERT_NAME
+TIMER_ALERT_MESSAGE = "This alert appeared after 5 seconds"

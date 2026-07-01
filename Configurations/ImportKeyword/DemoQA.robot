@@ -12,6 +12,7 @@ Resource    ../../Locators/Dynamic/DemoQA/ElementsModule/WebTables.robot
 Resource    ../../Locators/Dynamic/DemoQA/FormsModule/PracticeForm.robot
 
 ### Locators - Static ###
+Resource    ../../Locators/Static/DemoQA/AlertsFramesWindowsModule/Alerts.robot
 Resource    ../../Locators/Static/DemoQA/AlertsFramesWindowsModule/BrowserWindows.robot
 Resource    ../../Locators/Static/DemoQA/ElementsModule/BrokenLinks.robot
 Resource    ../../Locators/Static/DemoQA/ElementsModule/Buttons.robot
