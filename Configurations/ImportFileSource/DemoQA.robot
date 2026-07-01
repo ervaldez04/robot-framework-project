@@ -1,6 +1,7 @@
 *** Settings ***
 Documentation    Keywords of Demo QA
 
+Resource    ../../ResourceFiles/SourceKeywords/DemoQA/AlertsPage.resource
 Resource    ../../ResourceFiles/SourceKeywords/DemoQA/BrokenLinksPage.resource
 Resource    ../../ResourceFiles/SourceKeywords/DemoQA/BrowswerWindowsPage.resource
 Resource    ../../ResourceFiles/SourceKeywords/DemoQA/ButtonsPage.resource
