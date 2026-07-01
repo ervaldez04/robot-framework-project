@@ -4,6 +4,10 @@ Documentation    Keywords used in Buttons Page of Demo QA
 Resource         ../../../Configurations/ImportKeyword/DemoQA.robot
 
 *** Keywords ***
+Navigate To Buttons Page
+    [Documentation]    Navigate to Buttons Page
+    Go To    ${DEMO_QA_BUTTONS}
+
 Select Type Of Click for Click Me
     [Documentation]    Select Type Of Click for Click Me
     [Arguments]    ${selected_button}
@@ -30,10 +34,6 @@ Select Type Of Click for Right Click Me
     ...    ELSE IF    '${selected_button}'=='${RIGHT_CLICK}'    Open Context Menu    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE IF    '${selected_button}'=='${CLICK}'    Wait And Click    ${RIGHT_CLICK_ME_BUTTON}
     ...    ELSE    Fail    Log    ${selected_button} value is invalid!
-
-Navigate To Buttons Page
-    [Documentation]    Navigate to Buttons Page
-    Go To    ${DEMO_QA_BUTTONS}
 
 ### VALIDATION ###
 Validate Button Message
